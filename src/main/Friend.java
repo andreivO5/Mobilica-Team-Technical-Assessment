@@ -2,6 +2,7 @@ package main;
 
 public class Friend
 {
+    // Friend class to create friend objects with attributes and the Search function.
     private int user_id;
     private String name;
     private double latitude, longitude;
@@ -40,8 +41,8 @@ public class Friend
         double distance = radius * c;
 
         // checking that the friend is within 100km of St. Stephen's Green
-        if (distance <= 100.0) return true;
-        else return false;
+        // returns True or False.
+        return distance <= 100.0;
     }
     public int getUser_id() {
         return user_id;
@@ -51,21 +52,4 @@ public class Friend
         return name;
     }
 
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    @Override
-    public String toString() {
-        return "Friend{" +
-                "user_id=" + user_id +
-                ", name='" + name + '\'' +
-                ", latitude=" + latitude +
-                ", longitude=" + longitude +
-                '}';
-    }
 }

@@ -40,7 +40,6 @@ public class FileProcessor
             // Assigning size to the array
             friendList = new Friend[lineList.size()];
 
-
             for (int i = 0; i < lineList.size(); i++)
             {
                 // JSON objects are created from each line in lineList
