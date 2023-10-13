@@ -18,9 +18,11 @@ public class FileProcessor
         this.filepath = filepath;
     }
 
-    // method
-    public void CreateFriendObjects()
+    // method to create an array of the Friend objects
+    public Friend[] CreateFriendObjects()
     {
+        // Creating a Friend array to hold the new Friend objects
+        Friend[] friendList = new Friend[0];
         try
         {
             // create file from filepath
@@ -28,19 +30,18 @@ public class FileProcessor
             // using scanner to read the text file
             Scanner textScanner = new Scanner(friends);
             // creating a list of strings to hold each individual line in friends.txt
-            List <String> lineList = new ArrayList<>();
+            List<String> lineList = new ArrayList<>();
 
-            while(textScanner.hasNextLine())
-            {
+            while (textScanner.hasNextLine()) {
                 // adding each line to the lineList
                 lineList.add(textScanner.nextLine());
             }
 
-            // Creating a Friend array to hold the new Friend objects
-            Friend[] friendList = new Friend[lineList.size()];
+            // Assigning size to the array
+            friendList = new Friend[lineList.size()];
 
 
-            for(int i = 0; i < lineList.size(); i++)
+            for (int i = 0; i < lineList.size(); i++)
             {
                 // JSON objects are created from each line in lineList
                 JSONObject temp = new JSONObject(lineList.get(i));
@@ -53,17 +54,13 @@ public class FileProcessor
                 // the Friend object is constructed with the attributes and added to the friendList array
                 friendList[i] = new Friend(userId, name, latitude, longitude);
             }
-
-            // temporary tester of Friend toString
-            System.out.println(friendList[0]);
-
-        }
-        catch (FileNotFoundException e)
-        {
+        } catch (FileNotFoundException e) {
             // error checking for file reading.
             System.out.println("Error reading friends.txt");
             e.printStackTrace();
         }
+        // returning the array
+        return friendList;
     }
 
 }
